@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuestionario de Cultura General</title>
+
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+  >
+<body>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="box">
+                        
+                        <h2 class="title is-5" id="texto-pregunta">Cargando...</h2>
+
+                        
+                        <div id="contenedor-opciones" class="control mb-5">
+                            
+                        </div>
+
+                        
+                        <div class="buttons is-flex is-justify-content-between">
+                            <button class="button is-light" id="btn-anterior">Anterior</button>
+                            <button class="button is-info" id="btn-siguiente">Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script> 
+        const cuestionario = {
+            titulo: "PREGUNTAS GENERALES",
+            total: 5,
+            interrogantes: [
+                {
+                    pregunta: "1. ¿Cuál es el océano más grande y profundo de la Tierra?",
+                    alternativas: ["Océano Atlántico", "Océano Pacífico", "Océano Índico"]
+                },
+                {
+                    pregunta: "2. ¿Qué gas necesitan las plantas para realizar la fotosíntesis?",
+                    alternativas: ["Dióxido de carbono", "Oxígeno", "Nitrógeno"]
+                },
+                {
+                    pregunta: "3. ¿En qué continente se encuentra el desierto del Sahara?",
+                    alternativas: ["Asia", "América", "África"]
+                },
+                {
+                    pregunta: "4. ¿Cuál es el metal cuyo símbolo químico en la tabla periódica es Au?",
+                    alternativas: ["Plata", "Oro", "Cobre"]
+                },
+                {
+                    pregunta: "5. ¿Cuántos huesos tiene aproximadamente el cuerpo humano adulto?",
+                    alternativas: ["206 huesos", "300 huesos", "150 huesos"]
+                }
+            ]
+        }
+
+        
+        let posicion = 0
+
+        
+        const elementoPregunta = document.getElementById("texto-pregunta")
+        const elementoOpciones = document.getElementById("contenedor-opciones")
+        const botonAnterior = document.getElementById("btn-anterior")
+        const botonSiguiente = document.getElementById("btn-siguiente")
+
+        
+        function actualizarPantalla() {
+            const actual = cuestionario.interrogantes[posicion]
+            
+            
+            elementoPregunta.innerText = actual.pregunta
+            
+            
+            elementoOpciones.innerHTML = `
+                <label class="radio is-block mb-2">
+                    <input type="radio" name="opcion"> ${actual.alternativas[0]}
+                </label>
+                <label class="radio is-block mb-2">
+                    <input type="radio" name="opcion"> ${actual.alternativas[1]}
+                </label>
+                <label class="radio is-block mb-2">
+                    <input type="radio" name="opcion"> ${actual.alternativas[2]}
+                </label>
+            `
+        }
+
+        
+        botonSiguiente.addEventListener("click", function () {
+            if (posicion < cuestionario.total - 1) {
+                posicion = posicion + 1
+                actualizarPantalla()
+            } else {
+                alert("¡Completaste todas las preguntas del cuestionario!")
+            }
+        })
+
+        
+        botonAnterior.addEventListener("click", function () {
+            if (posicion > 0) {
+                posicion = posicion - 1
+                actualizarPantalla()
+            }
+        })
+
+        
+        actualizarPantalla()
+    </script>
+</body>
+</html>
+

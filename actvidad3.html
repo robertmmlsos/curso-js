@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotización de PC / Portátil</title>
+
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+  >
+</head>
+<body>
+
+  <!-- Formulario realizar cotización -->
+<!-- Compra una PC / portátil -->
+<!-- Existan campos obligatorios / no obligatorios -->
+<!-- Generar un cuadro de diálogo con la confirmación -->
+<!-- Aplicar estilos CSS -->
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+    
+        <div class="column is-6 box">
+          <h1 class="title has-text-centered">Cotización de Computadora</h1>
+          
+          <form action="" autocomplete="off" id="formulario">
+            
+            
+            <div class="field">
+              <label class="label" for="apellidos">Apellidos</label>
+                <input type="text" class="input" id="apellidos" minlength="3" required >
+            </div>
+          
+
+            <div class="field">
+              <label for="nombres" class="label">Nombres</label>
+                <input type="text" class="input" id="nombres" minlength="3" required >
+            </div>
+
+            <div class="field">
+              <label for="email" class="label">Correo electrónico</label>
+              
+                <input type="email" class="input" id="email" required >
+            </div>
+
+            
+            <div class="field">
+              <label for="tipo_equipo" class="label">Tipo de Equipo</label>
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select name="tipo_equipo" id="tipo_equipo" required>
+                    <option value="" disabled selected>Seleccione una opción...</option>
+                    <option value="pc">PC de Escritorio</option>
+                    <option value="laptop">Portátil / Laptop</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          
+            <div class="field">
+              <label for="presupuesto" class="label">Presupuesto aproximado (SOLES)</label>
+              <div class="control">
+                <input type="number" class="input" min="300" max="10000" value="500" id="presupuesto" required>
+              </div>
+            </div>
+
+            
+            <div class="field">
+              <label for="marca_preferida" class="label">Marca de preferencia</label>
+                <div class="select is-fullwidth">
+                  <select name="marca_preferida" id="marca_preferida">
+                    <option value="indiferente">Preferencias</option>
+                    <option value="asus">ASUS</option>
+                    <option value="lenovo">Lenovo</option>
+                    <option value="hp">HP</option>
+                    <option value="dell">Dell</option>
+                  </select>
+              </div>
+            </div>
+
+          
+            
+            <div class="field is-grouped is-grouped-centered mt-5">
+                <button class="button is-link" type="submit">Enviar Cotización</button>
+                <button class="button is-link is-light" type="reset">Reiniciar</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    
+    const formulario = document.getElementById("formulario");
+
+    
+    formulario.addEventListener("submit", function (event) {
+      
+      event.preventDefault();
+    
+      
+      if (confirm("¿Está seguro de proceder con el envío de su cotización?")) {
+        alert("Cotización guardada y enviada correctamente...");
+        formulario.reset(); 
+      }
+    });
+  </script>
+  
+</body>
+</html>
+
+</html>
